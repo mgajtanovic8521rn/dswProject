@@ -1,4 +1,17 @@
 package gui.swing.view;
 
-public class ToolBar {
+import javax.swing.*;
+
+public class ToolBar extends JToolBar {
+
+    public ToolBar() {
+        initializeComponents();
+    }
+
+    private void initializeComponents(){
+
+
+
+    }
+
 }

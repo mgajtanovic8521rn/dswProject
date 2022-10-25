@@ -1,11 +1,17 @@
 package gui.swing.controller;
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 
-public class NewAction extends AbstractActionGeruMap{
+public class ExitAction extends AbstractActionGeruMap {
 
-    public NewAction() {
+
+
+    public ExitAction() {
+
+
     }
+
 
     @Override
     public void actionPerformed(ActionEvent e) {
