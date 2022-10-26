@@ -6,6 +6,8 @@ public class ActionManager {
     InfoAction infoAction;
     NewAction newAction;
 
+    EditAction editAction;
+
 
     public ActionManager() {
         initActions();
@@ -15,6 +17,11 @@ public class ActionManager {
         exitAction = new ExitAction();
         infoAction = new InfoAction();
         newAction = new NewAction();
+        editAction = new EditAction();
+    }
+
+    public EditAction getEditAction() {
+        return editAction;
     }
 
     public ExitAction getExitAction() {

@@ -9,7 +9,9 @@ public class InfoAction extends AbstractActionGeruMap{
 
 
     public InfoAction() {
-
+        putValue(SMALL_ICON,loadIcon("images/infoIcon.png"));
+        putValue(NAME,"Info");
+        putValue(SHORT_DESCRIPTION,"Info");
     }
 
     @Override
