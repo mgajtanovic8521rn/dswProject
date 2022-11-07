@@ -1,10 +1,16 @@
 package gui.swing.view;
 
+import core.ApplicationFramework;
 import gui.swing.controller.ActionManager;
+import gui.swing.tree.MapTree;
+import gui.swing.tree.MapTreeImplementation;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.swing.*;
 import java.awt.*;
-
+@Setter
+@Getter
 public class MainFrame extends JFrame {
 
     private static MainFrame instance = null;
@@ -12,6 +18,7 @@ public class MainFrame extends JFrame {
     ActionManager actionManager;
     ToolBar toolBar;
     MyMenuBar myMenuBar;
+    private MapTree mapTree;
 
     public MainFrame(){
 
@@ -21,6 +28,7 @@ public class MainFrame extends JFrame {
     private void init(){
 
         actionManager = new ActionManager();
+        mapTree = new MapTreeImplementation();
         initialiseGUI();
 
     }
@@ -40,9 +48,11 @@ public class MainFrame extends JFrame {
         toolBar = new ToolBar();
         this.add(toolBar,BorderLayout.NORTH);
 
+        JTree projectExplorer = mapTree.generateTree(ApplicationFramework.getInstance().getMapRepository().getProjectExplorer());
+
         JPanel panel = new JPanel();
 
-        JScrollPane scrollPane = new JScrollPane();
+        JScrollPane scrollPane = new JScrollPane(projectExplorer);
         scrollPane.setMinimumSize(new Dimension(200,150));
 
         JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,scrollPane,panel);
@@ -80,7 +90,7 @@ public class MainFrame extends JFrame {
 
 
    // public MyMenuBar getMenuBar() {
-    //    return myMenuBar;
+   //    return myMenuBar;
    // }
 
     public void setMenuBar(MyMenuBar myMenuBar) {

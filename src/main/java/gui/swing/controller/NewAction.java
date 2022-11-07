@@ -1,5 +1,6 @@
 package gui.swing.controller;
 
+import gui.swing.tree.model.MapTreeItem;
 import gui.swing.view.MainFrame;
 
 import javax.swing.*;
@@ -15,6 +16,7 @@ public class NewAction extends AbstractActionGeruMap{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        JOptionPane.showMessageDialog(MainFrame.getInstance(),"new akcija");
+        MapTreeItem selected = (MapTreeItem) MainFrame.getInstance().getMapTree().getSelectedNode();
+        MainFrame.getInstance().getMapTree().addChild(selected);
     }
 }
