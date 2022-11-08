@@ -2,7 +2,7 @@ package gui.swing.controller;
 
 public class ActionManager {
 
-    ExitAction exitAction;
+    RemoveAction exitAction;
     InfoAction infoAction;
     NewAction newAction;
 
@@ -14,7 +14,7 @@ public class ActionManager {
     }
 
     private void initActions(){
-        exitAction = new ExitAction();
+        exitAction = new RemoveAction();
         infoAction = new InfoAction();
         newAction = new NewAction();
         editAction = new EditAction();
@@ -24,7 +24,7 @@ public class ActionManager {
         return editAction;
     }
 
-    public ExitAction getExitAction() {
+    public RemoveAction getExitAction() {
         return exitAction;
     }
 

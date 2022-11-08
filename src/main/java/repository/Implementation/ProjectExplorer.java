@@ -17,5 +17,6 @@ public class ProjectExplorer extends MapNodeComposite {
                 this.getChildren().add(project);
             }
         }
+
     }
 }
