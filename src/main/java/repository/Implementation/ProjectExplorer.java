@@ -19,4 +19,9 @@ public class ProjectExplorer extends MapNodeComposite {
         }
 
     }
+
+    @Override
+    public void removeChild(MapNode child) {
+
+    }
 }

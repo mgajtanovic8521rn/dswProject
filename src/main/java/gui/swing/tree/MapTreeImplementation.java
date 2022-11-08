@@ -42,6 +42,7 @@ public class MapTreeImplementation implements MapTree{
 
     @Override
     public void removeChild(MapTreeItem node) {
+
         ((DefaultMutableTreeNode)node.getParent()).remove(node);        //brisanje iz stabla
         ((MapNodeComposite)node.getMapNode().getParent()).removeChild(node.getMapNode());       //brisanje iz modela
         SwingUtilities.updateComponentTreeUI(treeView);
