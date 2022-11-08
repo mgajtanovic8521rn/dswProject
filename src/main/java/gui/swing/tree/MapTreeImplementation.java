@@ -12,7 +12,6 @@ import repository.composite.MapNodeComposite;
 import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
-import java.util.Random;
 
 public class MapTreeImplementation implements MapTree{
     private MapTreeView treeView;
@@ -35,15 +34,16 @@ public class MapTreeImplementation implements MapTree{
             return;
 
         MapNode child = createChild(parent.getMapNode());
-        parent.add(new MapTreeItem(child));
-        ((MapNodeComposite) parent.getMapNode()).addChild(child);
+        parent.add(new MapTreeItem(child));     //dodavanje u stablo
+        ((MapNodeComposite) parent.getMapNode()).addChild(child);       //dodavanje u model
         treeView.expandPath(treeView.getSelectionPath());
         SwingUtilities.updateComponentTreeUI(treeView);
     }
 
     @Override
     public void removeChild(MapTreeItem node) {
-        ((DefaultMutableTreeNode)node.getParent()).remove(node);
+        ((DefaultMutableTreeNode)node.getParent()).remove(node);        //brisanje iz stabla
+        ((MapNodeComposite)node.getMapNode().getParent()).removeChild(node.getMapNode());       //brisanje iz modela
         SwingUtilities.updateComponentTreeUI(treeView);
     }
 
