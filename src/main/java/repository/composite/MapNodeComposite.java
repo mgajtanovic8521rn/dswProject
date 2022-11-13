@@ -17,10 +17,6 @@ public abstract class MapNodeComposite extends MapNode{
         this.children = new ArrayList<>();
     }
 
-    public MapNodeComposite(String name, MapNode parent, List<MapNode> children) {
-        super(name, parent);
-        this.children = children;
-    }
 
     public abstract void addChild(MapNode child);
 
