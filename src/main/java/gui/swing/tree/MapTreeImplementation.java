@@ -1,14 +1,16 @@
 package gui.swing.tree;
 
+import core.ApplicationFramework;
 import gui.swing.tree.model.MapTreeItem;
 import gui.swing.tree.view.MapTreeView;
-import observer.ObserverMessage;
 import repository.Implementation.Element;
 import repository.Implementation.MindMap;
 import repository.Implementation.Project;
 import repository.Implementation.ProjectExplorer;
 import repository.composite.MapNode;
 import repository.composite.MapNodeComposite;
+import repository.factory.MapNodeFactory;
+import repository.factory.UtilEnumerator;
 
 import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
@@ -34,7 +36,8 @@ public class MapTreeImplementation implements MapTree{
         if (!(parent.getMapNode() instanceof MapNodeComposite))
             return;
 
-        MapNode child = createChild(parent.getMapNode());
+        MapNodeFactory factory = ApplicationFramework.getInstance().getMapRepository().getFactory(parent.getMapNode());
+        MapNode child = factory.createMapNode(parent.getMapNode());
         parent.add(new MapTreeItem(child));     //dodavanje u stablo
         ((MapNodeComposite) parent.getMapNode()).addChild(child);       //dodavanje u model
         treeView.expandPath(treeView.getSelectionPath());
