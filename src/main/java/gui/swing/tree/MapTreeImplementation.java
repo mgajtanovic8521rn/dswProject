@@ -1,6 +1,7 @@
 package gui.swing.tree;
 
 import core.ApplicationFramework;
+import gui.swing.tree.controller.TreeMouseListener;
 import gui.swing.tree.model.MapTreeItem;
 import gui.swing.tree.view.MapTreeView;
 import repository.Implementation.Element;
@@ -27,6 +28,8 @@ public class MapTreeImplementation implements MapTree{
         MapTreeItem root = new MapTreeItem(projectExplorer);
         treeModel = new DefaultTreeModel(root);
         treeView = new MapTreeView(treeModel);
+        treeView.addMouseListener(new TreeMouseListener());
+
         return treeView;
     }
 
