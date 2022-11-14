@@ -28,4 +28,6 @@ public class ProjectExplorer extends MapNodeComposite {
         }
         notifySubscribers(this, ObserverMessage.OBRISANO_DETE);
     }
+
+
 }
