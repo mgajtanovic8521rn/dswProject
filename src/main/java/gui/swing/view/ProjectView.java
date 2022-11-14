@@ -39,6 +39,7 @@ public class ProjectView extends JPanel implements Subscriber {
         this.project = project;
         ime.setText(project.getName());
         mindMapViewList.clear();
+        tabbedPane.removeAll();
 
         for(MapNode mapNode : project.getChildren()){
             MindMapView mindMapView = new MindMapView((MindMap) mapNode);
@@ -46,8 +47,6 @@ public class ProjectView extends JPanel implements Subscriber {
             tabbedPane.addTab(mapNode.getName(),mindMapView);
 
         }
-
-
     }
 
     @Override
