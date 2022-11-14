@@ -2,6 +2,7 @@ package gui.swing.tree;
 
 import gui.swing.tree.model.MapTreeItem;
 import gui.swing.tree.view.MapTreeView;
+import observer.ObserverMessage;
 import repository.Implementation.Element;
 import repository.Implementation.MindMap;
 import repository.Implementation.Project;
@@ -37,7 +38,7 @@ public class MapTreeImplementation implements MapTree{
         parent.add(new MapTreeItem(child));     //dodavanje u stablo
         ((MapNodeComposite) parent.getMapNode()).addChild(child);       //dodavanje u model
         treeView.expandPath(treeView.getSelectionPath());
-        SwingUtilities.updateComponentTreeUI(treeView);
+        SwingUtilities.updateComponentTreeUI(treeView);     //ovo ne sme da stoji ako observer radi
     }
 
     @Override
@@ -45,7 +46,7 @@ public class MapTreeImplementation implements MapTree{
 
         ((DefaultMutableTreeNode)node.getParent()).remove(node);        //brisanje iz stabla
         ((MapNodeComposite)node.getMapNode().getParent()).removeChild(node.getMapNode());       //brisanje iz modela
-        SwingUtilities.updateComponentTreeUI(treeView);
+        SwingUtilities.updateComponentTreeUI(treeView);     //ovo ne sme da stoji ako observer radi
     }
 
     @Override

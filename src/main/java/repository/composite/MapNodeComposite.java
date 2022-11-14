@@ -2,6 +2,8 @@ package repository.composite;
 
 import lombok.Getter;
 import lombok.Setter;
+import observer.ObserverMessage;
+import observer.Subscriber;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,5 +31,34 @@ public abstract class MapNodeComposite extends MapNode{
             }
         }
         return null;
+    }
+
+    @Override
+    public void addSubscriber(Subscriber subscriber) {
+        MapNode mapNode = null;
+        if(subscriber instanceof MapNode) {
+            mapNode = (MapNode)subscriber;
+        }
+        if(!children.contains(mapNode)){
+            children.add(mapNode);
+        }
+    }
+
+    @Override
+    public void removeSubscriber(Subscriber subscriber) {
+        MapNode mapNode = null;
+        if(subscriber instanceof MapNode) {
+            mapNode = (MapNode) subscriber;
+            children.remove(mapNode);
+        }
+    }
+
+    @Override
+    public void notifySubscribers(Object notification, ObserverMessage message) {
+        for (MapNode mapNode:children) {
+            if(mapNode instanceof Subscriber){
+                ((Subscriber)mapNode).update(notification, message);
+            }
+        }
     }
 }

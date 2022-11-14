@@ -3,10 +3,11 @@ package repository.composite;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import observer.Publisher;
 
 @Setter
 @Getter
-public abstract class MapNode {
+public abstract class MapNode implements Publisher {
     private String name;
     @ToString.Exclude
     private MapNode parent;

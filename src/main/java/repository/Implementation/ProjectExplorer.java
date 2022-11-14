@@ -1,5 +1,7 @@
 package repository.Implementation;
 
+import observer.ObserverMessage;
+import observer.Subscriber;
 import repository.composite.MapNode;
 import repository.composite.MapNodeComposite;
 
@@ -17,7 +19,6 @@ public class ProjectExplorer extends MapNodeComposite {
                 this.getChildren().add(project);
             }
         }
-
     }
 
     @Override
@@ -25,5 +26,6 @@ public class ProjectExplorer extends MapNodeComposite {
         if (child != null &&  child instanceof Project){
             getChildren().remove(child);
         }
+        notifySubscribers(this, ObserverMessage.OBRISANO_DETE);
     }
 }

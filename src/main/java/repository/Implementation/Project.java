@@ -1,5 +1,6 @@
 package repository.Implementation;
 
+import observer.ObserverMessage;
 import repository.composite.MapNode;
 import repository.composite.MapNodeComposite;
 
@@ -18,6 +19,7 @@ public class Project extends MapNodeComposite {
                 this.getChildren().add(mindMap);
             }
         }
+        notifySubscribers(this, ObserverMessage.DODATO_DETE);
     }
 
     @Override
@@ -25,5 +27,6 @@ public class Project extends MapNodeComposite {
         if (child != null &&  child instanceof MindMap){
             getChildren().remove(child);
         }
+        notifySubscribers(this, ObserverMessage.OBRISANO_DETE);
     }
 }
