@@ -4,6 +4,7 @@ import core.ApplicationFramework;
 import gui.swing.tree.controller.TreeMouseListener;
 import gui.swing.tree.model.MapTreeItem;
 import gui.swing.tree.view.MapTreeView;
+import gui.swing.view.MainFrame;
 import repository.Implementation.Element;
 import repository.Implementation.MindMap;
 import repository.Implementation.Project;
@@ -54,6 +55,11 @@ public class MapTreeImplementation implements MapTree{
 
         ((DefaultMutableTreeNode)node.getParent()).remove(node);        //brisanje iz stabla
         ((MapNodeComposite)node.getMapNode().getParent()).removeChild(node.getMapNode());       //brisanje iz modela
+
+        if(node.getMapNode().getParent() instanceof ProjectExplorer){       //ne svidja nam se, ali nismo znali kako da projectExplorer javi u projectView da project ne postoji
+            MainFrame.getInstance().getProjectView().setProject(null);
+        }
+
         SwingUtilities.updateComponentTreeUI(treeView);     //ovo ne sme da stoji ako observer radi
     }
 
@@ -62,16 +68,6 @@ public class MapTreeImplementation implements MapTree{
         return (MapTreeItem) treeView.getLastSelectedPathComponent();
     }
 
-    private MapNode createChild(MapNode parent) {
-        if (parent instanceof ProjectExplorer)
-            return  new Project("Project" + UtilEnumerator.getEnum("project"), parent);
-        if (parent instanceof Project)
-            return  new MindMap("MindMap" + UtilEnumerator.getEnum("mindMap"), parent);
-        if (parent instanceof MindMap)
-            return  new Element("Element" + UtilEnumerator.getEnum("element"), parent);
-
-        return null;
-    }
 
     @Override
     public void expand() {

@@ -38,6 +38,17 @@ public abstract class MapNodeComposite extends MapNode{
         if (child != null && child instanceof MindMap) {
             getChildren().remove(child);
         }
+
+        if(child instanceof MapNodeComposite){
+            MapNodeComposite mapNodeComposite = (MapNodeComposite) child;
+            ((MapNodeComposite) child).removeAllChildren();
+        }
+
+        notifySubscribers(this, ObserverMessage.OBRISANO_DETE);
+    }
+
+    public void removeAllChildren(){
+        this.getChildren().clear();
         notifySubscribers(this, ObserverMessage.OBRISANO_DETE);
     }
 

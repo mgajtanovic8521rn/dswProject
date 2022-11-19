@@ -19,6 +19,7 @@ public class ProjectExplorer extends MapNodeComposite {
                 this.getChildren().add(project);
             }
         }
+        notifySubscribers(this, ObserverMessage.DODATO_DETE);
     }
 
 

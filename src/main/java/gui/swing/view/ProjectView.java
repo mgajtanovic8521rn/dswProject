@@ -37,13 +37,38 @@ public class ProjectView extends JPanel implements Subscriber {
 
     public void setProject(Project project) {
 
+        this.project = project;
+
         if(this.project != null)
             this.project.removeSubscriber(this);
+        else{
+            this.ime.setText("Otvorite zeljeni projekat");
+            return;
+        }
 
-        this.project = project;
         project.addSubscriber(this);
 
         ime.setText(project.getName());
+        resetTabova();
+    }
+
+    @Override
+    public void update(Object notification, observer.ObserverMessage message) {
+        if(message.equals(ObserverMessage.PROMENJENO_IME)){
+            if(notification instanceof MapNode)
+                this.getIme().setText(((MapNode) notification).getName());
+        }
+
+        if(message.equals(ObserverMessage.OBRISANO_DETE)){
+            resetTabova();
+        }
+
+        if(message.equals((ObserverMessage.DODATO_DETE))){
+            resetTabova();
+        }
+    }
+
+    void resetTabova(){
         tabbedPane.removeAll();
 
         if(mindMapViewList.size() != 0)
@@ -53,20 +78,11 @@ public class ProjectView extends JPanel implements Subscriber {
 
         mindMapViewList.clear();
 
-        for(MapNode mapNode : project.getChildren()){
+        for(MapNode mapNode : project.getChildren()) {
             MindMapView mindMapView = new MindMapView((MindMap) mapNode);
             mapNode.addSubscriber(mindMapView);
             mindMapViewList.add(mindMapView);
-            tabbedPane.addTab(mapNode.getName(),mindMapView);
-
-        }
-    }
-
-    @Override
-    public void update(Object notification, observer.ObserverMessage message) {
-        if(message.equals(ObserverMessage.PROMENJENO_IME)){
-            if(notification instanceof MapNode)
-                this.getIme().setText(((MapNode) notification).getName());
+            tabbedPane.addTab(mapNode.getName(), mindMapView);
         }
     }
 }
