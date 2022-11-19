@@ -5,6 +5,7 @@ import gui.swing.tree.controller.TreeMouseListener;
 import gui.swing.tree.model.MapTreeItem;
 import gui.swing.tree.view.MapTreeView;
 import gui.swing.view.MainFrame;
+import messageGenerator.MessageType;
 import repository.Implementation.Element;
 import repository.Implementation.MindMap;
 import repository.Implementation.Project;
@@ -38,8 +39,10 @@ public class MapTreeImplementation implements MapTree{
     @Override
     public void addChild(MapTreeItem parent) {
 
-        if (!(parent.getMapNode() instanceof MapNodeComposite))
+        if (!(parent.getMapNode() instanceof MapNodeComposite)){
+            ApplicationFramework.getInstance().getMessageGenerator().generateMessage(MessageType.CANT_ADD_CHILD);
             return;
+        }
 
         MapNodeFactory factory = ApplicationFramework.getInstance().getMapRepository().getFactory(parent.getMapNode());
         MapNode child = factory.createMapNode(parent.getMapNode());
@@ -52,6 +55,11 @@ public class MapTreeImplementation implements MapTree{
 
     @Override
     public void removeChild(MapTreeItem node) {
+
+        if(node.getMapNode() instanceof ProjectExplorer){
+            ApplicationFramework.getInstance().getMessageGenerator().generateMessage(MessageType.PROJECT_EXPLORER_DELETE);
+            return;
+        }
 
         ((DefaultMutableTreeNode)node.getParent()).remove(node);        //brisanje iz stabla
         ((MapNodeComposite)node.getMapNode().getParent()).removeChild(node.getMapNode());       //brisanje iz modela

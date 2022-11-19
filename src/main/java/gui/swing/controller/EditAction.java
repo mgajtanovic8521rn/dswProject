@@ -1,7 +1,9 @@
 package gui.swing.controller;
 
+import core.ApplicationFramework;
 import gui.swing.tree.model.MapTreeItem;
 import gui.swing.view.MainFrame;
+import messageGenerator.MessageType;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -17,7 +19,17 @@ public class EditAction extends AbstractActionGeruMap{
     @Override
     public void actionPerformed(ActionEvent e) {
         MapTreeItem selected = MainFrame.getInstance().getMapTree().getSelectedNode();
-        String newName = JOptionPane.showInputDialog(MainFrame.getInstance(),"Unesite zeljeno ime");
-        MainFrame.getInstance().getMapTree().getSelectedNode().getMapNode().setName(newName);
+        if(selected == null){
+            ApplicationFramework.getInstance().getMessageGenerator().generateMessage(MessageType.NOTHING_SELECTED);
+            return;
+        }
+        String newName = "";
+        newName = JOptionPane.showInputDialog(MainFrame.getInstance(),"Unesite zeljeno ime");
+
+        if(newName == null || newName.equals("")) {
+            ApplicationFramework.getInstance().getMessageGenerator().generateMessage(MessageType.NAME_EMPTY);
+            return;
+        }
+        selected.setName(newName);
     }
 }

@@ -3,6 +3,11 @@ package core;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import messageGenerator.ConsoleLogger;
+import messageGenerator.FileLogger;
+import messageGenerator.MessageGenerator;
+
+import java.io.Console;
 
 @Getter
 @Setter
@@ -10,6 +15,9 @@ public class ApplicationFramework {
 
     protected Gui gui;
     protected MapRepository mapRepository;
+    private MessageGenerator messageGenerator;
+    private ConsoleLogger  consoleLogger;
+    private FileLogger fileLogger;
 
     public void run(){
         this.gui.start();
@@ -22,6 +30,10 @@ public class ApplicationFramework {
     public void initialise(Gui gui,MapRepository mapRepository){
         this.gui = gui;
         this.mapRepository = mapRepository;
+        this.messageGenerator = new MessageGenerator();
+        messageGenerator.addSubscriber(gui);
+        consoleLogger = new ConsoleLogger();
+        fileLogger = new FileLogger();
     }
     private static ApplicationFramework instance;
 

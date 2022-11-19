@@ -1,5 +1,7 @@
 package core;
 
-public interface Gui {
+import observer.Subscriber;
+
+public interface Gui extends Subscriber {
     void start();
 }

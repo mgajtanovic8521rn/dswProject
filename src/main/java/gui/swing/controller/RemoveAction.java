@@ -1,7 +1,9 @@
 package gui.swing.controller;
 
+import core.ApplicationFramework;
 import gui.swing.tree.model.MapTreeItem;
 import gui.swing.view.MainFrame;
+import messageGenerator.MessageType;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -21,6 +23,10 @@ public class RemoveAction extends AbstractActionGeruMap {
     @Override
     public void actionPerformed(ActionEvent e) {
         MapTreeItem selected = MainFrame.getInstance().getMapTree().getSelectedNode();
+        if(selected == null){
+            ApplicationFramework.getInstance().getMessageGenerator().generateMessage(MessageType.NOTHING_SELECTED);
+            return;
+        }
         MainFrame.getInstance().getMapTree().removeChild(selected);
     }
 }

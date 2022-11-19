@@ -1,9 +1,12 @@
 package gui.swing.controller;
 
+import core.ApplicationFramework;
 import gui.swing.tree.model.MapTreeItem;
 import gui.swing.view.MainFrame;
+import messageGenerator.MessageType;
 
 import javax.swing.*;
+import java.awt.desktop.AppForegroundListener;
 import java.awt.event.ActionEvent;
 
 public class NewAction extends AbstractActionGeruMap{
@@ -17,6 +20,10 @@ public class NewAction extends AbstractActionGeruMap{
     @Override
     public void actionPerformed(ActionEvent e) {
         MapTreeItem selected = (MapTreeItem) MainFrame.getInstance().getMapTree().getSelectedNode();
+        if(selected == null){
+            ApplicationFramework.getInstance().getMessageGenerator().generateMessage(MessageType.NOTHING_SELECTED);
+            return;
+        }
         MainFrame.getInstance().getMapTree().addChild(selected);
     }
 }
