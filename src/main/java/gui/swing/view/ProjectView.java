@@ -2,6 +2,7 @@ package gui.swing.view;
 
 import lombok.Getter;
 import lombok.Setter;
+import observer.ObserverMessage;
 import observer.Subscriber;
 import repository.Implementation.MindMap;
 import repository.Implementation.Project;
@@ -36,13 +37,25 @@ public class ProjectView extends JPanel implements Subscriber {
 
     public void setProject(Project project) {
 
+        if(this.project != null)
+            this.project.removeSubscriber(this);
+
         this.project = project;
+        project.addSubscriber(this);
+
         ime.setText(project.getName());
-        mindMapViewList.clear();
         tabbedPane.removeAll();
+
+        if(mindMapViewList.size() != 0)
+            for(MindMapView mindMapView : mindMapViewList){
+                mindMapView.getMindMap().removeSubscriber(mindMapView);
+            }
+
+        mindMapViewList.clear();
 
         for(MapNode mapNode : project.getChildren()){
             MindMapView mindMapView = new MindMapView((MindMap) mapNode);
+            mapNode.addSubscriber(mindMapView);
             mindMapViewList.add(mindMapView);
             tabbedPane.addTab(mapNode.getName(),mindMapView);
 
@@ -51,6 +64,9 @@ public class ProjectView extends JPanel implements Subscriber {
 
     @Override
     public void update(Object notification, observer.ObserverMessage message) {
-
+        if(message.equals(ObserverMessage.PROMENJENO_IME)){
+            if(notification instanceof MapNode)
+                this.getIme().setText(((MapNode) notification).getName());
+        }
     }
 }

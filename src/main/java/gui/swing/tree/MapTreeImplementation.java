@@ -16,6 +16,7 @@ import repository.factory.UtilEnumerator;
 import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.TreePath;
 
 public class MapTreeImplementation implements MapTree{
     private MapTreeView treeView;
@@ -41,6 +42,7 @@ public class MapTreeImplementation implements MapTree{
 
         MapNodeFactory factory = ApplicationFramework.getInstance().getMapRepository().getFactory(parent.getMapNode());
         MapNode child = factory.createMapNode(parent.getMapNode());
+
         parent.add(new MapTreeItem(child));     //dodavanje u stablo
         ((MapNodeComposite) parent.getMapNode()).addChild(child);       //dodavanje u model
         treeView.expandPath(treeView.getSelectionPath());
@@ -71,4 +73,8 @@ public class MapTreeImplementation implements MapTree{
         return null;
     }
 
+    @Override
+    public void expand() {
+        treeView.expandPath(treeView.getSelectionPath());
+    }
 }

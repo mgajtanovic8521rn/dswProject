@@ -21,11 +21,4 @@ public class MindMap extends MapNodeComposite {
         notifySubscribers(this, ObserverMessage.DODATO_DETE);
     }
 
-    @Override
-    public void removeChild(MapNode child) {
-        if (child != null &&  child instanceof Element){
-            getChildren().remove(child);
-        }
-        notifySubscribers(this, ObserverMessage.OBRISANO_DETE);
-    }
 }

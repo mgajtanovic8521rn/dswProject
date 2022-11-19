@@ -1,5 +1,6 @@
 package gui.swing.controller;
 
+import gui.swing.tree.model.MapTreeItem;
 import gui.swing.view.MainFrame;
 
 import javax.swing.*;
@@ -15,6 +16,8 @@ public class EditAction extends AbstractActionGeruMap{
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-        JOptionPane.showMessageDialog(MainFrame.getInstance(),"Edit akcija");
+        MapTreeItem selected = MainFrame.getInstance().getMapTree().getSelectedNode();
+        String newName = JOptionPane.showInputDialog(MainFrame.getInstance(),"Unesite zeljeno ime");
+        MainFrame.getInstance().getMapTree().getSelectedNode().getMapNode().setName(newName);
     }
 }

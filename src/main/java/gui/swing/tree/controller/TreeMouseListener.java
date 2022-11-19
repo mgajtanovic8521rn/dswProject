@@ -15,6 +15,7 @@ public class TreeMouseListener extends MouseAdapter {
 
         if(e.getClickCount() == 2 && mapTreeItem.getMapNode() instanceof Project){
             MainFrame.getInstance().getProjectView().setProject((Project) mapTreeItem.getMapNode());
+            MainFrame.getInstance().getMapTree().expand();
         }
     }
 }

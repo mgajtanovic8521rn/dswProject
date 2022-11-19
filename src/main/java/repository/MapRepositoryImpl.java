@@ -16,6 +16,7 @@ import repository.factory.ProjectFactory;
 @Setter
 @Getter
 public class MapRepositoryImpl implements MapRepository {
+
     private ProjectExplorer projectExplorer;
 
     public MapRepositoryImpl() {

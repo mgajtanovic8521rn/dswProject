@@ -9,4 +9,5 @@ public interface MapTree {
     void addChild(MapTreeItem parent);
     void removeChild(MapTreeItem node);
     MapTreeItem getSelectedNode();
+    void expand();
 }

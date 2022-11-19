@@ -22,11 +22,4 @@ public class Project extends MapNodeComposite {
         notifySubscribers(this, ObserverMessage.DODATO_DETE);
     }
 
-    @Override
-    public void removeChild(MapNode child) {
-        if (child != null &&  child instanceof MindMap){
-            getChildren().remove(child);
-        }
-        notifySubscribers(this, ObserverMessage.OBRISANO_DETE);
-    }
 }

@@ -5,7 +5,6 @@ public class ActionManager {
     RemoveAction exitAction;
     InfoAction infoAction;
     NewAction newAction;
-
     EditAction editAction;
 
 
