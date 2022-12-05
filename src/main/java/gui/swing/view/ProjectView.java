@@ -7,6 +7,7 @@ import observer.Subscriber;
 import repository.Implementation.MindMap;
 import repository.Implementation.Project;
 import repository.composite.MapNode;
+import state.StateManager;
 
 import javax.swing.*;
 import java.awt.*;
@@ -22,17 +23,22 @@ public class ProjectView extends JPanel implements Subscriber {
     JLabel autor;
     List<MindMapView> mindMapViewList;
     JTabbedPane tabbedPane;
+    ProjectToolBar projectToolBar;
+
+    StateManager stateManager;
 
     public ProjectView() {
-
         this.ime = new JLabel("Otvorite zeljeni projekat");
         tabbedPane = new JTabbedPane();
         autor = new JLabel("Nepoznat");
+        projectToolBar = new ProjectToolBar();
         mindMapViewList = new ArrayList<>();
         this.setLayout(new BorderLayout());
         this.add(ime,BorderLayout.NORTH);
+        this.add(projectToolBar, BorderLayout.NORTH);
         this.add(autor,BorderLayout.SOUTH);
         this.add(tabbedPane, BorderLayout.CENTER);
+        stateManager = new StateManager();
     }
 
     public void setProject(Project project) {
@@ -85,4 +91,11 @@ public class ProjectView extends JPanel implements Subscriber {
             tabbedPane.addTab(mapNode.getName(), mindMapView);
         }
     }
+
+    public void startAddState(){stateManager.setAddState();}
+    public void startConnectState(){stateManager.setConnectState();}
+    public void startDragState(){stateManager.setDragState();}
+    public void startRemoveState(){stateManager.setRemoveState();}
+    public void startSelectState(){stateManager.setSelectState();}
+    public void startZoomState(){stateManager.setZoomState();}
 }
