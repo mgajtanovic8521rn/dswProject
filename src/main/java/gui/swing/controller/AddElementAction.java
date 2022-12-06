@@ -1,5 +1,7 @@
 package gui.swing.controller;
 
+import gui.swing.view.MainFrame;
+
 import java.awt.event.ActionEvent;
 
 public class AddElementAction extends AbstractActionGeruMap{
@@ -12,6 +14,6 @@ public class AddElementAction extends AbstractActionGeruMap{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
+        MainFrame.getInstance().getProjectView().startAddState();
     }
 }

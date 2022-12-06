@@ -6,21 +6,26 @@ import observer.ObserverMessage;
 import observer.Subscriber;
 import repository.composite.MapNode;
 
+import java.awt.*;
+
 @Getter
 @Setter
 
 public class Element extends MapNode {
 
     private int debljinaLinije;
+    private Color color;
 
     public Element(String name, MapNode parent) {
         super(name, parent);
-        debljinaLinije = 2;
+        this.debljinaLinije = 2;
+        this.color = Color.BLACK;
     }
 
-    public Element(String name, MapNode parent, int debljinaLinije) {
+    public Element(String name, MapNode parent, int debljinaLinije, Color color) {
         super(name, parent);
         this.debljinaLinije = debljinaLinije;
+        this.color = color;
     }
 
     @Override
@@ -35,6 +40,6 @@ public class Element extends MapNode {
 
     @Override
     public void notifySubscribers(Object notification, ObserverMessage message) {
-
+        this.getParent().notifySubscribers(notification, message);
     }
 }

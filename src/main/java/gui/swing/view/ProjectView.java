@@ -11,6 +11,8 @@ import state.StateManager;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -91,6 +93,8 @@ public class ProjectView extends JPanel implements Subscriber {
             tabbedPane.addTab(mapNode.getName(), mindMapView);
         }
     }
+
+
 
     public void startAddState(){stateManager.setAddState();}
     public void startConnectState(){stateManager.setConnectState();}
