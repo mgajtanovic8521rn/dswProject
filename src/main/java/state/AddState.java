@@ -29,7 +29,9 @@ public class AddState extends State {
         String text = jTextArea.getText();
         int deblinaLinije = Integer.valueOf(jTextAreaLine.getText());
         if(result == JOptionPane.OK_OPTION)
-            mindMapView.getMindMap().addChild(new Pojam(text, MainFrame.getInstance().getMapTree().getSelectedNode().getMapNode(), e.getX(), e.getY(), deblinaLinije, boja));
+            //mindMapView.getMindMap().addChild(new Pojam(text, mindMapView.getMindMap(), e.getX(), e.getY(), deblinaLinije, boja));
+            MainFrame.getInstance().getMapTree().addElement(new Pojam(text, mindMapView.getMindMap(), e.getX(), e.getY(), deblinaLinije, boja), mindMapView.getMindMap());
+
     }
 
     @Override

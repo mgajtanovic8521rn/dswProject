@@ -15,6 +15,7 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 
 @Getter
@@ -26,6 +27,11 @@ public class MindMapView extends JPanel implements Subscriber {
     List<PojamView> pojamViewList;
     List<VezaView> vezaViewList;
 
+    SelectView selectView;
+
+    List<PojamView> selectedPojamList;
+    List<VezaView> selectedVezaList;
+
 
     public MindMapView(MindMap mindMap) {
         this.mindMap = mindMap;
@@ -33,8 +39,11 @@ public class MindMapView extends JPanel implements Subscriber {
         ime.setText(mindMap.getName());
         pojamViewList = new ArrayList<>();
         vezaViewList = new ArrayList<>();
+        selectedPojamList = new ArrayList<>();
+        selectedVezaList = new ArrayList<>();
         this.addMouseListener(new MindMapMouseListener(this));
         this.addMouseMotionListener(new MindMapMouseListener(this));
+        selectView = new SelectView(0,0,0,0);
 
         if(!mindMap.getChildren().isEmpty()){
             for(MapNode mapNode : mindMap.getChildren()){
@@ -74,7 +83,15 @@ public class MindMapView extends JPanel implements Subscriber {
         }
 
         if(message.equals(ObserverMessage.PROMENJENA_POZICIJA)){
-            System.out.println("POZVAO");
+            pojamViewList.clear();
+            vezaViewList.clear();
+            for(MapNode mapNode : mindMap.getChildren()){
+                if(mapNode instanceof Pojam){
+                    pojamViewList.add(new PojamView((Pojam)mapNode));
+                }else{
+                    vezaViewList.add(new VezaView((Veza) mapNode));
+                }
+            }
             this.repaint();
         }
     }
@@ -88,6 +105,46 @@ public class MindMapView extends JPanel implements Subscriber {
         for(VezaView vezaView : vezaViewList){
             vezaView.paint((Graphics2D) g);
         }
+        selectView.paint((Graphics2D) g);
+    }
+
+    public void select(int xStart, int yStart, int xEnd, int yEnd){
+        selectView.setXStart(xStart);
+        selectView.setYStart(yStart);
+        selectView.setXEnd(xEnd);
+        selectView.setYEnd(yEnd);
+        this.repaint();
+    }
+
+    public void selected(int xStart, int yStart, int xEnd, int yEnd){
+        for(PojamView pojamView : selectedPojamList){
+            pojamView.setLineSelected(false);
+        }
+        selectedPojamList.clear();
+        for(PojamView pojamView : pojamViewList){
+            if(pojamView.getX() >= xStart && pojamView.getX() <= xEnd && pojamView.getY() >= yStart && pojamView.getY() <= yEnd){
+                selectedPojamList.add(pojamView);
+            }
+        }
+        for(PojamView pojamView : selectedPojamList){
+            pojamView.setLineSelected(true);
+        }
+
+        for(VezaView vezaView : selectedVezaList){
+            vezaView.setLineSelected(false);
+        }
+        selectedVezaList.clear();
+        for(VezaView vezaView : vezaViewList){
+            if((vezaView.getXStart() >= xStart && vezaView.getXStart() <= xEnd && vezaView.getYStart() >= yStart && vezaView.getYStart() <= yEnd) ||
+                    (vezaView.getXEnd() >= xStart && vezaView.getXEnd() <= xEnd && vezaView.getYEnd() >= yStart && vezaView.getYEnd() <= yEnd)){
+                selectedVezaList.add(vezaView);
+
+            }
+        }
+        for(VezaView vezaView : selectedVezaList){
+            vezaView.setLineSelected(true);
+        }
+        this.repaint();
     }
 
     public void mousePressed(MouseEvent e) {
@@ -100,5 +157,18 @@ public class MindMapView extends JPanel implements Subscriber {
 
     public void mouseDragged(MouseEvent e) {
         MainFrame.getInstance().getProjectView().getStateManager().getCurrentState().misPovucen(e, this);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof MindMapView)) return false;
+        MindMapView that = (MindMapView) o;
+        return Objects.equals(getMindMap(), that.getMindMap()) && Objects.equals(getIme(), that.getIme());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getMindMap(), getIme());
     }
 }

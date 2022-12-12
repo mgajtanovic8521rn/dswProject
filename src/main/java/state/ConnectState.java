@@ -6,6 +6,7 @@ import repository.Implementation.MindMap;
 import repository.Implementation.Pojam;
 import repository.Implementation.Veza;
 
+import java.awt.*;
 import java.awt.event.MouseEvent;
 
 public class ConnectState extends State {
@@ -36,7 +37,7 @@ public class ConnectState extends State {
             }
         }
         if(start != null){
-            veza = new Veza("Veza", mindMap, start.getPojam(), null,  xStart, yStart, xStart, yStart);
+            veza = new Veza("Veza", mindMap, start.getPojam(), null,  xStart, yStart, xStart, yStart, Color.BLACK, 3);
             mindMapView.getMindMap().addChild(veza);
         }
     }
@@ -103,6 +104,8 @@ public class ConnectState extends State {
             veza.setxEnd(end.getX() + end.getWidth());
             veza.setyEnd(e.getY());
         }
+
+        veza.setElement2(end.getPojam());
 
         start = null;
         end = null;

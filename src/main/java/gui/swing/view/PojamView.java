@@ -17,6 +17,7 @@ public class PojamView extends ElementView{
     Pojam pojam;
     int line;
     Color color;
+    boolean lineSelected;
 
     public PojamView(Pojam pojam) {
         X = pojam.getX();
@@ -26,6 +27,7 @@ public class PojamView extends ElementView{
         this.width = 0;
         this.line = pojam.getDebljinaLinije();
         this.color = pojam.getColor();
+        lineSelected = false;
     }
 
     public void paint(Graphics2D g){
@@ -35,7 +37,13 @@ public class PojamView extends ElementView{
         g.setPaint(new Color(color.getRed(), color.getBlue(), color.getGreen(), 100));
         g.fill(new Rectangle(X,Y,textWidth+10,height));
         g.setPaint(color);
-        g.setStroke(new BasicStroke(line));
+        if(lineSelected){
+            float dash[] = { 10.0f };
+            g.setStroke(new BasicStroke(3.0f, BasicStroke.CAP_BUTT,
+                    BasicStroke.JOIN_MITER, 10.0f, dash, 0.0f));
+        }
+        else
+            g.setStroke(new BasicStroke(line));
         g.drawRect(X,Y,textWidth+10,height);
         g.setPaint(Color.BLACK);
         g.drawString(pojam.getName(), X + 5, Y + height/2);

@@ -28,6 +28,16 @@ public class Element extends MapNode {
         this.color = color;
     }
 
+    public void setDebljinaLinije(int debljinaLinije) {
+        this.debljinaLinije = debljinaLinije;
+        this.notifySubscribers(this, ObserverMessage.PROMENJENA_POZICIJA);
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
+        this.notifySubscribers(this, ObserverMessage.PROMENJENA_POZICIJA);
+    }
+
     @Override
     public void addSubscriber(Subscriber subscriber) {
 

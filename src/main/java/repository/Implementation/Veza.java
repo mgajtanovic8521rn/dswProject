@@ -6,6 +6,7 @@ import observer.ObserverMessage;
 import observer.Subscriber;
 import repository.composite.MapNode;
 
+import java.awt.*;
 import java.util.Objects;
 
 @Getter
@@ -18,8 +19,8 @@ public class Veza extends Element {
     int xEnd;
     int yEnd;
 
-    public Veza(String name, MapNode parent, Element element1, Element element2, int xStart, int yStart, int xEnd, int yEnd) {
-        super(name, parent);
+    public Veza(String name, MapNode parent, Element element1, Element element2, int xStart, int yStart, int xEnd, int yEnd, Color color, int debljinaLinije) {
+        super(name, parent, debljinaLinije, color);
         this.element1 = element1;
         this.element2 = element2;
         this.xStart = xStart;

@@ -1,6 +1,7 @@
 package gui.swing.controller;
 
 import gui.swing.view.MainFrame;
+import gui.swing.view.MindMapView;
 
 import java.awt.event.ActionEvent;
 
@@ -14,6 +15,8 @@ public class RemoveElementAction extends AbstractActionGeruMap{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        MainFrame.getInstance().getProjectView().startRemoveState();
+        MindMapView mindMapView = MainFrame.getInstance().getProjectView().getActiveMindMap();
+        if(mindMapView != null)
+            MainFrame.getInstance().getMapTree().removeElement(mindMapView.getMindMap(), mindMapView.getSelectedPojamList(), mindMapView.getSelectedVezaList());
     }
 }

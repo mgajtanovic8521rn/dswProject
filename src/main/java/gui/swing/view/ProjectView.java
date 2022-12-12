@@ -94,7 +94,15 @@ public class ProjectView extends JPanel implements Subscriber {
         }
     }
 
-
+    public MindMapView getActiveMindMap(){
+        MindMapView mindMapView = null;
+        for(MindMapView mindMapView1 : MainFrame.getInstance().getProjectView().getMindMapViewList()){
+            if(mindMapView1.getIme().getText().equals(((MindMapView) MainFrame.getInstance().getProjectView().getTabbedPane().getSelectedComponent()).getIme().getText())){
+                mindMapView = mindMapView1;
+            }
+        }
+        return mindMapView;
+    }
 
     public void startAddState(){stateManager.setAddState();}
     public void startConnectState(){stateManager.setConnectState();}

@@ -5,11 +5,10 @@ import gui.swing.tree.controller.TreeMouseListener;
 import gui.swing.tree.model.MapTreeItem;
 import gui.swing.tree.view.MapTreeView;
 import gui.swing.view.MainFrame;
+import gui.swing.view.PojamView;
+import gui.swing.view.VezaView;
 import messageGenerator.MessageType;
-import repository.Implementation.Element;
-import repository.Implementation.MindMap;
-import repository.Implementation.Project;
-import repository.Implementation.ProjectExplorer;
+import repository.Implementation.*;
 import repository.composite.MapNode;
 import repository.composite.MapNodeComposite;
 import repository.factory.MapNodeFactory;
@@ -19,6 +18,8 @@ import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreePath;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MapTreeImplementation implements MapTree{
     private MapTreeView treeView;
@@ -50,7 +51,19 @@ public class MapTreeImplementation implements MapTree{
         parent.add(new MapTreeItem(child));     //dodavanje u stablo
         ((MapNodeComposite) parent.getMapNode()).addChild(child);       //dodavanje u model
         treeView.expandPath(treeView.getSelectionPath());
-        SwingUtilities.updateComponentTreeUI(treeView);     //ovo ne sme da stoji ako observer radi
+        SwingUtilities.updateComponentTreeUI(treeView);
+    }
+
+    @Override
+    public void addElement(Element element, MindMap mindMap) {
+        mindMap.addChild(element);
+        for (int i = 0 ; i < MainFrame.getInstance().getMapTree().getSelectedNode().getChildCount() ; i++){
+            if(((MapTreeItem)MainFrame.getInstance().getMapTree().getSelectedNode().getChildAt(i)).getMapNode().equals(mindMap)){
+                ((MapTreeItem)MainFrame.getInstance().getMapTree().getSelectedNode().getChildAt(i)).add(new MapTreeItem(element));
+            }
+        }
+        treeView.expandPath(treeView.getSelectionPath());
+        SwingUtilities.updateComponentTreeUI(treeView);
     }
 
     @Override
@@ -72,6 +85,49 @@ public class MapTreeImplementation implements MapTree{
     }
 
     @Override
+    public void removeElement(MindMap mindMap, List<PojamView> pojmovi, List<VezaView> veze){
+
+        System.out.println(pojmovi);
+        System.out.println(veze);
+
+        for(VezaView vezaView : veze){
+            mindMap.removeChild(vezaView.getVeza());
+        }
+        for(PojamView pojamView : pojmovi){
+            mindMap.removeChild(pojamView.getPojam());
+        }
+
+        List<MapNode> mindMapChildren = new ArrayList<MapNode>(mindMap.getChildren());
+
+        for(int i = 0 ; i < mindMapChildren.size() ; i++) {
+            if (mindMapChildren.get(i) instanceof Veza) {
+                Veza veza = (Veza) mindMapChildren.get(i);
+                if(!(mindMap.getChildren().contains(veza.getElement1()) && mindMap.getChildren().contains(veza.getElement2()))){
+                    mindMap.removeChild(veza);
+                }
+            }
+        }
+
+        MapTreeItem mapTreeItem = null;
+        for (int i = 0 ; i < MainFrame.getInstance().getMapTree().getSelectedNode().getChildCount() ; i++){
+            if(((MapTreeItem)MainFrame.getInstance().getMapTree().getSelectedNode().getChildAt(i)).getMapNode().equals(mindMap)){
+                mapTreeItem = ((MapTreeItem)MainFrame.getInstance().getMapTree().getSelectedNode().getChildAt(i));
+
+            }
+        }
+
+        for(int i = 0 ; i < mapTreeItem.getChildCount() ; i ++){
+            for(PojamView pojamView : pojmovi){
+                if(((MapTreeItem)mapTreeItem.getChildAt(i)).getMapNode().getName().equals(pojamView.getPojam().getName())){
+                    this.removeChild((MapTreeItem) mapTreeItem.getChildAt(i));
+                }
+            }
+        }
+
+    }
+
+
+    @Override
     public MapTreeItem getSelectedNode() {
         return (MapTreeItem) treeView.getLastSelectedPathComponent();
     }
@@ -80,5 +136,10 @@ public class MapTreeImplementation implements MapTree{
     @Override
     public void expand() {
         treeView.expandPath(treeView.getSelectionPath());
+    }
+
+    @Override
+    public void refresh() {
+        SwingUtilities.updateComponentTreeUI(treeView);
     }
 }

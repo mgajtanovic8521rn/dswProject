@@ -15,6 +15,7 @@ public class ActionManager {
     RemoveElementAction removeElementAction;
     SelectElementAction selectElementAction;
     ZoomElementAction zoomElementAction;
+    EditElementAction editElementAction;
 
 
     public ActionManager() {
@@ -33,21 +34,7 @@ public class ActionManager {
         removeElementAction = new RemoveElementAction();
         selectElementAction = new SelectElementAction();
         zoomElementAction = new ZoomElementAction();
+        editElementAction = new EditElementAction();
     }
 
-    public EditAction getEditAction() {
-        return editAction;
-    }
-
-    public RemoveAction getExitAction() {
-        return exitAction;
-    }
-
-    public InfoAction getInfoAction() {
-        return infoAction;
-    }
-
-    public NewAction getNewAction() {
-        return newAction;
-    }
 }
