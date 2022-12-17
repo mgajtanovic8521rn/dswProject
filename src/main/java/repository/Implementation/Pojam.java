@@ -21,7 +21,7 @@ public class Pojam extends Element {
         super(name, parent, line, color);
         X = x;
         Y = y;
-        this.height = 50;
+        this.height = 30;
 
     }
 

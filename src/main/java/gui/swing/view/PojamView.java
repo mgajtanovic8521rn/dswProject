@@ -32,11 +32,11 @@ public class PojamView extends ElementView{
 
     public void paint(Graphics2D g){
         int textWidth = g.getFontMetrics().stringWidth(pojam.getName());
-        this.width = textWidth;
-
-        g.setPaint(new Color(color.getRed(), color.getBlue(), color.getGreen(), 100));
-        g.fill(new Rectangle(X,Y,textWidth+10,height));
+        this.width = textWidth + 10;
         g.setPaint(color);
+        g.setPaint(new Color(color.getRed(), color.getBlue(), color.getGreen(), 100));
+        g.fill(new Rectangle(X,Y,this.width,height));
+
         if(lineSelected){
             float dash[] = { 10.0f };
             g.setStroke(new BasicStroke(3.0f, BasicStroke.CAP_BUTT,
@@ -44,7 +44,7 @@ public class PojamView extends ElementView{
         }
         else
             g.setStroke(new BasicStroke(line));
-        g.drawRect(X,Y,textWidth+10,height);
+        g.drawRect(X,Y,this.width,height);
         g.setPaint(Color.BLACK);
         g.drawString(pojam.getName(), X + 5, Y + height/2);
     }
