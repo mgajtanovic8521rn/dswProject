@@ -1,6 +1,9 @@
 package state;
 
+import com.sun.tools.javac.Main;
 import core.ApplicationFramework;
+import gui.swing.command.AbstractCommand;
+import gui.swing.command.implementation.AddElementCommand;
 import gui.swing.view.MainFrame;
 import gui.swing.view.MindMapView;
 import repository.Implementation.Pojam;
@@ -28,10 +31,14 @@ public class AddState extends State {
         Color boja = jColorChooser.getColor();
         String text = jTextArea.getText();
         int deblinaLinije = Integer.valueOf(jTextAreaLine.getText());
-        if(result == JOptionPane.OK_OPTION)
-            //mindMapView.getMindMap().addChild(new Pojam(text, mindMapView.getMindMap(), e.getX(), e.getY(), deblinaLinije, boja));
-            MainFrame.getInstance().getMapTree().addElement(new Pojam(text, mindMapView.getMindMap(), e.getX(), e.getY(), deblinaLinije, boja), mindMapView.getMindMap());
 
+        Pojam pojam = null;
+        if(result == JOptionPane.OK_OPTION)
+            pojam = new Pojam(text, mindMapView.getMindMap(), e.getX(), e.getY(), deblinaLinije, boja);
+        else return;
+
+        AbstractCommand command = new AddElementCommand(pojam, mindMapView);
+        MainFrame.getInstance().getCommandManager().addCommand(command);
     }
 
     @Override

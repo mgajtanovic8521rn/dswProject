@@ -20,6 +20,10 @@ public class MyMenuBar extends JMenuBar {
         //this.add(menuInfo);
 
         menuFile.add(MainFrame.getInstance().getActionManager().getNewAction());
+        menuFile.add(MainFrame.getInstance().getActionManager().getSaveAction());
+        menuFile.add(MainFrame.getInstance().getActionManager().getSaveAsAction());
+        menuFile.add(MainFrame.getInstance().getActionManager().getOpenAction());
+        menuFile.add(MainFrame.getInstance().getActionManager().getExportAction());
 
         menuHelp.add(MainFrame.getInstance().getActionManager().getEditAction());
 

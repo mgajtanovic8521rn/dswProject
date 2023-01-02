@@ -14,12 +14,14 @@ import java.awt.*;
 public class Element extends MapNode {
 
     private int debljinaLinije;
-    private Color color;
+    private transient Color color;
+    private String boja;
 
     public Element(String name, MapNode parent) {
         super(name, parent);
         this.debljinaLinije = 2;
         this.color = Color.BLACK;
+        this.boja = "Black";
     }
 
     public Element(String name, MapNode parent, int debljinaLinije, Color color) {

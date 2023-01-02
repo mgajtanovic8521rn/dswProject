@@ -57,4 +57,9 @@ public class Pojam extends Element {
     public int hashCode() {
         return Objects.hash(getX(), getY());
     }
+
+    @Override
+    public String toString() {
+        return "Pojam: " + this.getName();
+    }
 }

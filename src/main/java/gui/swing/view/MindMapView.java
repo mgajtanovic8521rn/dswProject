@@ -10,9 +10,12 @@ import repository.Implementation.Pojam;
 import repository.Implementation.Veza;
 import repository.composite.MapNode;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -106,6 +109,23 @@ public class MindMapView extends JPanel implements Subscriber {
             vezaView.paint((Graphics2D) g);
         }
         selectView.paint((Graphics2D) g);
+    }
+
+    public void saveImage(String name,String type) {
+        type = "png";
+        BufferedImage image = new BufferedImage(getWidth(),getHeight(), BufferedImage.TYPE_INT_RGB);
+        Graphics2D g2 = image.createGraphics();
+        paint(g2);
+        JFileChooser jfc = new JFileChooser();
+        jfc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        jfc.showSaveDialog(null);
+        if (jfc.showOpenDialog(MainFrame.getInstance()) == JFileChooser.APPROVE_OPTION) {
+            try {
+                ImageIO.write(image, type, new File(jfc.getSelectedFile() + "/" + name + "." + type));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     public void select(int xStart, int yStart, int xEnd, int yEnd){

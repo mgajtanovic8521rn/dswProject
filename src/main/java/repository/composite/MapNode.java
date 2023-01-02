@@ -12,10 +12,11 @@ import java.util.List;
 
 @Setter
 @Getter
+@ToString
 public abstract class MapNode implements Publisher {
     private String name;
-    private MapNode parent;
-    List<Subscriber> subscribers;
+    private transient MapNode parent;
+    transient List<Subscriber> subscribers;
 
     public MapNode(String name, MapNode parent) {
         this.name = name;

@@ -16,6 +16,13 @@ public class ActionManager {
     SelectElementAction selectElementAction;
     ZoomElementAction zoomElementAction;
     EditElementAction editElementAction;
+    SaveAsAction saveAsAction;
+    SaveAction saveAction;
+    OpenAction openAction;
+    UndoAction undoAction;
+    RedoAction redoAction;
+    CenterAction centerAction;
+    ExportAction exportAction;
 
 
     public ActionManager() {
@@ -35,6 +42,13 @@ public class ActionManager {
         selectElementAction = new SelectElementAction();
         zoomElementAction = new ZoomElementAction();
         editElementAction = new EditElementAction();
+        saveAsAction = new SaveAsAction();
+        saveAction = new SaveAction();
+        openAction = new OpenAction();
+        undoAction = new UndoAction();
+        redoAction = new RedoAction();
+        centerAction = new CenterAction();
+        exportAction = new ExportAction();
     }
 
 }

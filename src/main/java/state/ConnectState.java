@@ -1,5 +1,9 @@
 package state;
 
+import gui.swing.command.AbstractCommand;
+import gui.swing.command.implementation.AddElementCommand;
+import gui.swing.command.implementation.AddVezaCommand;
+import gui.swing.view.MainFrame;
 import gui.swing.view.MindMapView;
 import gui.swing.view.PojamView;
 import repository.Implementation.MindMap;
@@ -104,8 +108,13 @@ public class ConnectState extends State {
             veza.setxEnd(end.getX() + end.getWidth());
             veza.setyEnd(e.getY());
         }
-
         veza.setElement2(end.getPojam());
+
+
+
+        mindMap.removeChild(veza);          //izbacujemo ga iz modela, prvo dodavanje u model se koristi da bi obzerver "vukao" liniju po ekranu
+        AbstractCommand command = new AddVezaCommand(veza, mindMapView);
+        MainFrame.getInstance().getCommandManager().addCommand(command);
 
         start = null;
         end = null;

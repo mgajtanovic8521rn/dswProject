@@ -2,6 +2,7 @@ package repository.composite;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import observer.ObserverMessage;
 import observer.Subscriber;
 import repository.Implementation.MindMap;
@@ -11,9 +12,10 @@ import java.util.List;
 
 @Getter
 @Setter
+@ToString
 public abstract class MapNodeComposite extends MapNode{
 
-    List<MapNode> children;
+     List<MapNode> children;
 
 
     public MapNodeComposite(String name, MapNode parent) {

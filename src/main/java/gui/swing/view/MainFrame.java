@@ -1,6 +1,7 @@
 package gui.swing.view;
 
 import core.ApplicationFramework;
+import gui.swing.command.CommandManager;
 import gui.swing.controller.ActionManager;
 import gui.swing.tree.MapTree;
 import gui.swing.tree.MapTreeImplementation;
@@ -16,6 +17,8 @@ public class MainFrame extends JFrame {
     private static MainFrame instance = null;
 
     ActionManager actionManager;
+
+    CommandManager commandManager;
     ToolBar toolBar;
     MyMenuBar myMenuBar;
     ProjectView projectView;
@@ -29,6 +32,7 @@ public class MainFrame extends JFrame {
     private void init(){
 
         actionManager = new ActionManager();
+        commandManager = new CommandManager();
         mapTree = new MapTreeImplementation();
         initialiseGUI();
 

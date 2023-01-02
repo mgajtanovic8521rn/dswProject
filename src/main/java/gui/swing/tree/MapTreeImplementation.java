@@ -7,6 +7,7 @@ import gui.swing.tree.view.MapTreeView;
 import gui.swing.view.MainFrame;
 import gui.swing.view.PojamView;
 import gui.swing.view.VezaView;
+import lombok.Getter;
 import messageGenerator.MessageType;
 import repository.Implementation.*;
 import repository.composite.MapNode;
@@ -20,7 +21,7 @@ import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreePath;
 import java.util.ArrayList;
 import java.util.List;
-
+@Getter
 public class MapTreeImplementation implements MapTree{
     private MapTreeView treeView;
     private DefaultTreeModel treeModel;
@@ -85,16 +86,19 @@ public class MapTreeImplementation implements MapTree{
     }
 
     @Override
-    public void removeElement(MindMap mindMap, List<PojamView> pojmovi, List<VezaView> veze){
+    public List<Element> removeElement(MindMap mindMap, List<PojamView> pojmovi, List<VezaView> veze){
 
         System.out.println(pojmovi);
         System.out.println(veze);
+        List<Element> obrisano = new ArrayList<>();
 
         for(VezaView vezaView : veze){
             mindMap.removeChild(vezaView.getVeza());
+            obrisano.add(vezaView.getVeza());
         }
         for(PojamView pojamView : pojmovi){
             mindMap.removeChild(pojamView.getPojam());
+            obrisano.add(pojamView.getPojam());
         }
 
         List<MapNode> mindMapChildren = new ArrayList<MapNode>(mindMap.getChildren());
@@ -104,6 +108,7 @@ public class MapTreeImplementation implements MapTree{
                 Veza veza = (Veza) mindMapChildren.get(i);
                 if(!(mindMap.getChildren().contains(veza.getElement1()) && mindMap.getChildren().contains(veza.getElement2()))){
                     mindMap.removeChild(veza);
+                    obrisano.add(veza);
                 }
             }
         }
@@ -124,6 +129,25 @@ public class MapTreeImplementation implements MapTree{
             }
         }
 
+        return obrisano;
+
+    }
+
+    @Override
+    public void removeSingleElement(MindMap mindMap ,Element element) {
+        mindMap.removeChild(element);
+    }
+
+    @Override
+    public void loadProject(Project node) {
+        MapTreeItem loadedProject = new MapTreeItem(node);
+        ((DefaultMutableTreeNode)treeModel.getRoot()).add(loadedProject);
+
+        MapNodeComposite mapNode = (MapNodeComposite) ((MapTreeItem)treeModel.getRoot()).getMapNode();
+        mapNode.addChild(node);
+
+        treeView.expandPath(treeView.getSelectionPath());
+        SwingUtilities.updateComponentTreeUI(treeView);
     }
 
 

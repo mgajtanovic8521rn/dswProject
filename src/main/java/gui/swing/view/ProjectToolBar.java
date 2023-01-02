@@ -19,5 +19,6 @@ public class ProjectToolBar extends JToolBar {
         this.add(MainFrame.getInstance().getActionManager().getSelectElementAction());
         this.add(MainFrame.getInstance().getActionManager().getDragElementAction());
         this.add(MainFrame.getInstance().getActionManager().getEditElementAction());
+        this.add(MainFrame.getInstance().getActionManager().getCenterAction());
     }
 }

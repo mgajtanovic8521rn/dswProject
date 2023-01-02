@@ -39,8 +39,12 @@ public class PojamView extends ElementView{
 
         if(lineSelected){
             float dash[] = { 10.0f };
-            g.setStroke(new BasicStroke(3.0f, BasicStroke.CAP_BUTT,
+            g.setStroke(new BasicStroke((float)line, BasicStroke.CAP_BUTT,
                     BasicStroke.JOIN_MITER, 10.0f, dash, 0.0f));
+        }else if(MainFrame.getInstance().getProjectView().getActiveMindMap().getMindMap().getCentralniPojam() != null &&
+                MainFrame.getInstance().getProjectView().getActiveMindMap().getMindMap().getCentralniPojam().equals(pojam)){
+            g.setStroke(new BasicStroke(line*3, BasicStroke.CAP_BUTT,
+                    BasicStroke.JOIN_BEVEL));
         }
         else
             g.setStroke(new BasicStroke(line));

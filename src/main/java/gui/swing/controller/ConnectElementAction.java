@@ -7,7 +7,7 @@ import java.awt.event.ActionEvent;
 public class ConnectElementAction extends AbstractActionGeruMap{
 
     public ConnectElementAction() {
-        //putValue(SMALL_ICON,loadIcon("/images/infoIcon.png"));
+        putValue(SMALL_ICON,loadIcon("/images/line.png"));
         putValue(NAME,"Connect Element");
         putValue(SHORT_DESCRIPTION,"Connect Element");
     }

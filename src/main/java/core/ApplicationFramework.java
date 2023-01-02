@@ -6,6 +6,7 @@ import lombok.Setter;
 import messageGenerator.ConsoleLogger;
 import messageGenerator.FileLogger;
 import messageGenerator.MessageGenerator;
+import serializer.Serializer;
 
 import java.io.Console;
 
@@ -18,6 +19,7 @@ public class ApplicationFramework {
     private MessageGenerator messageGenerator;
     private ConsoleLogger  consoleLogger;
     private FileLogger fileLogger;
+    private Serializer serializer;
 
     public void run(){
         this.gui.start();
@@ -34,6 +36,7 @@ public class ApplicationFramework {
         messageGenerator.addSubscriber(gui);
         consoleLogger = new ConsoleLogger();
         fileLogger = new FileLogger();
+        serializer = new Serializer();
     }
     private static ApplicationFramework instance;
 
