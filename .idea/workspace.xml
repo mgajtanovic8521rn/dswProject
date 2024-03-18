@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="336dd13a-1d4d-4428-bda3-a821870a878d" name="Default Changelist" comment="Radi serijalizacija, deserij ne radi. Radi export as image funkcionalnost. Undo/redo radi za dodavanje, brisanje, povezivanje i izmene. Ne radi za pomeranje. Postavljanje centralnog pojma: Implementirana izmena izgleda za pojam, implementirana klasa (wrapper) koja cuva pojam i sve ostale pojmove sa kojima je direktno povezan, ostalo je jos da se obidje graf od centralnog pojma i da se postave na dobre koordinate pojmovi. Biblioteka sablona tek treba da se implementira">
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_projectlombok_lombok_1_18_24.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/swing/controller/InfoAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/swing/controller/InfoAction.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Enum" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="dev-stateSablon" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
+  <component name="ProjectId" id="2GxTcYfBTdLXn33jakWTEf8cLsD" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+    <option name="showVisibilityIcons" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/Users/admir/Downloads/gerumap-marijagajtanovic",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="AppCore" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="AppCore" />
+      <module name="gerumap-MarijaGajtanovic" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="gerumap-MarijaGajtanovic" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.AppCore" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.AppCore" />
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="336dd13a-1d4d-4428-bda3-a821870a878d" name="Default Changelist" comment="" />
+      <created>1667329314687</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1667329314687</updated>
+      <workItem from="1667329316873" duration="57000" />
+      <workItem from="1667329386753" duration="691000" />
+      <workItem from="1667856675419" duration="6124000" />
+      <workItem from="1668082196907" duration="2287000" />
+      <workItem from="1668087820635" duration="13947000" />
+      <workItem from="1668550093833" duration="3000" />
+      <workItem from="1668881890553" duration="7387000" />
+      <workItem from="1670115884916" duration="639000" />
+      <workItem from="1670236688669" duration="37898000" />
+      <workItem from="1670774125628" duration="9407000" />
+      <workItem from="1670860953457" duration="1716000" />
+      <workItem from="1671049919836" duration="1049000" />
+      <workItem from="1671107917920" duration="250000" />
+      <workItem from="1671110174920" duration="271000" />
+      <workItem from="1671306895070" duration="1235000" />
+      <workItem from="1671621805282" duration="710000" />
+      <workItem from="1671845027315" duration="371000" />
+      <workItem from="1671845656686" duration="69000" />
+      <workItem from="1672658236909" duration="21763000" />
+    </task>
+    <task id="LOCAL-00001" summary="Dodata pravilna enumeracija za dodate Node-ove u stablo. Exit action prepravljen u remove Action i radi. Dodavanje i brisanje iz modela i dalje ne radi, sve se desava samo u stablu">
+      <created>1667928069582</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1667928069583</updated>
+    </task>
+    <task id="LOCAL-00002" summary="&quot;Dobudzeno&quot; brisanje">
+      <created>1667928725946</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1667928725946</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Popravljen pushovan bag">
+      <created>1667928872361</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1667928872361</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Brisanje iz modela radi kako treba">
+      <created>1668383009761</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1668383009761</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Dodat Observer, u modelu implementiran svaki publisher metod.">
+      <created>1668384748085</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1668384748085</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Fabrika implementirana u potpunosti, i koristi se za dodavanje cvorova u stablo i model">
+      <created>1668386882856</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1668386882856</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Dodato ciscenje tabbedPane-a">
+      <created>1668442347789</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1668442347789</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Observer radi za promene imena, treba dodati i za brisanje i dodavanje deteta">
+      <created>1668886131674</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1668886131674</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Radi observer za brisanje i dodavanje dece">
+      <created>1668888673740</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1668888673740</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Z`poceta implementacija state-a, dodat project toolbar, u model dodati Veza i Pojam">
+      <created>1670240667539</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1670240667539</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Radi dodavanje pojmova i njihovo povezivanje pomocu veza">
+      <created>1670366583055</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1670366583055</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Radi sve za kt2 sem zumiranja">
+      <created>1670861059456</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1670861059456</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Popravljen bag za linije koje krecu iz desnog dela pojma, sad se crtaju od ivice">
+      <created>1671307658586</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1671307658586</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Radi serijalizacija, deserij ne radi. Radi export as image funkcionalnost. Undo/redo radi za dodavanje, brisanje, povezivanje i izmene. Ne radi za pomeranje. Postavljanje centralnog pojma: Implementirana izmena izgleda za pojam, implementirana klasa (wrapper) koja cuva pojam i sve ostale pojmove sa kojima je direktno povezan, ostalo je jos da se obidje graf od centralnog pojma i da se postave na dobre koordinate pojmovi. Biblioteka sablona tek treba da se implementira">
+      <created>1672692149549</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1672692149549</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Dodata pravilna enumeracija za dodate Node-ove u stablo. Exit action prepravljen u remove Action i radi. Dodavanje i brisanje iz modela i dalje ne radi, sve se desava samo u stablu" />
+    <MESSAGE value="&quot;Dobudzeno&quot; brisanje" />
+    <MESSAGE value="Popravljen pushovan bag" />
+    <MESSAGE value="Brisanje iz modela radi kako treba" />
+    <MESSAGE value="Dodat Observer, u modelu implementiran svaki publisher metod." />
+    <MESSAGE value="Fabrika implementirana u potpunosti, i koristi se za dodavanje cvorova u stablo i model" />
+    <MESSAGE value="Dodato ciscenje tabbedPane-a" />
+    <MESSAGE value="Observer radi za promene imena, treba dodati i za brisanje i dodavanje deteta" />
+    <MESSAGE value="Radi observer za brisanje i dodavanje dece" />
+    <MESSAGE value="Z`poceta implementacija state-a, dodat project toolbar, u model dodati Veza i Pojam" />
+    <MESSAGE value="Radi dodavanje pojmova i njihovo povezivanje pomocu veza" />
+    <MESSAGE value="Radi sve za kt2 sem zumiranja" />
+    <MESSAGE value="Popravljen bag za linije koje krecu iz desnog dela pojma, sad se crtaju od ivice" />
+    <MESSAGE value="Radi serijalizacija, deserij ne radi. Radi export as image funkcionalnost. Undo/redo radi za dodavanje, brisanje, povezivanje i izmene. Ne radi za pomeranje. Postavljanje centralnog pojma: Implementirana izmena izgleda za pojam, implementirana klasa (wrapper) koja cuva pojam i sve ostale pojmove sa kojima je direktno povezan, ostalo je jos da se obidje graf od centralnog pojma i da se postave na dobre koordinate pojmovi. Biblioteka sablona tek treba da se implementira" />
+    <option name="LAST_COMMIT_MESSAGE" value="Radi serijalizacija, deserij ne radi. Radi export as image funkcionalnost. Undo/redo radi za dodavanje, brisanje, povezivanje i izmene. Ne radi za pomeranje. Postavljanje centralnog pojma: Implementirana izmena izgleda za pojam, implementirana klasa (wrapper) koja cuva pojam i sve ostale pojmove sa kojima je direktno povezan, ostalo je jos da se obidje graf od centralnog pojma i da se postave na dobre koordinate pojmovi. Biblioteka sablona tek treba da se implementira" />
+  </component>
+</project>

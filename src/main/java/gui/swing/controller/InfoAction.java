@@ -16,6 +16,6 @@ public class InfoAction extends AbstractActionGeruMap{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        JOptionPane.showMessageDialog(MainFrame.getInstance(),"Stevan Dabizljevic 3920rn\nMilan Kosanovic 5820rn");
+        JOptionPane.showMessageDialog(MainFrame.getInstance(),"Marija Gajtanovic 85/21rn");
     }
 }
